@@ -11,6 +11,7 @@ RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN dpkg -i /chrome.deb || apt-get install -yf
 RUN rm /chrome.deb
 
+RUN apt update && apt install -y unzip
 # Install Chrome WebDriver
 RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
