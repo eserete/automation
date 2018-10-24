@@ -15,6 +15,8 @@ RUN rm /chrome.deb
 RUN curl https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -o /usr/local/bin/chromedriver
 RUN chmod +x /usr/local/bin/chromedriver
 
+RUN netstat -tulpn | grep 4444
+
 RUN mkdir -p /app
 WORKDIR /app
 
