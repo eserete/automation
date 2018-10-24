@@ -7,7 +7,7 @@ require 'selenium-webdriver'
 
 Capybara.register_driver :selenium_proxy do |app|
   #In this case selenium is using a proxy configuration with Chrome browser
-  options = Selenium::WebDriver::Chrome::Options.new(args: [''])
+  options = Selenium::WebDriver::Chrome::Options.new(args: ['localhost:4444'])
   options.add_argument('--disable-geolocation')
   options.add_argument('--disable-gpu')
   options.add_argument('port=4444')
