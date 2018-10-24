@@ -9,6 +9,7 @@ Capybara.register_driver :selenium_proxy do |app|
   #In this case selenium is using a proxy configuration with Chrome browser
   options = Selenium::WebDriver::Chrome::Options.new(args: [''])
   options.add_argument('--disable-geolocation')
+  options.add_argument('--disable-gpu')
   options.add_argument('--headless')
   Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
 end
