@@ -2,23 +2,22 @@ module LoginObject
     
     include Capybara::DSL
 
-      URL = 'https://www.polistrial.com.br/#!/login'
+      URL = 'https://google.com'
 
       def visit
         super(URL) #This goes to the Begin Page
       end
 
       def setemail(email)
-         find(:xpath, @field_login).set(email)
+         find(:id, 'lst-ib').set(email)
       end
 
       def setpassword(senha)
-      	  find(:xpath, @field_password).send_keys(senha)
           click_login_button
       end
 
       def click_login_button
-          click_on(@button_login)
+        find(:xpath, @button_login).click
       end
       
       def click_menu_button

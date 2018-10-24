@@ -21,6 +21,7 @@ Exemplos:
  | gft.fabio.lima@br.experian.com           | bf8969     |
 
 @login
+@wip
 Esquema do Cenário: Logar com usuário válido e senha inválida
 Quando informar um <usuario> 
 E <senha> inválida, clicar no botão log_in

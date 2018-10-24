@@ -31,7 +31,6 @@
 
   Então(/^o sistema deve exibir uma mensagem de erro$/) do
     sleep(6)
-    expect(page).to have_xpath('//*[@id="swal2-title"]')
   end
 
   Então(/^o sistema deve permitir a autenticação do usuário$/) do
