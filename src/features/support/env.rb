@@ -1,8 +1,8 @@
 #encoding: UTF-8
 require 'capybara/cucumber'
-require 'capybara-screenshot/cucumber'
+# require 'capybara-screenshot/cucumber'
 require 'capybara/rspec'
-require 'capybara-screenshot/rspec'
+# require 'capybara-screenshot/rspec'
 require 'selenium-webdriver'
 
 Capybara.register_driver :selenium_proxy do |app|
