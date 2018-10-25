@@ -9,7 +9,7 @@ module LoginObject
       end
 
       def setemail(email)
-         find(:id, 'lst-ib').set(email)
+         find(:id, 'lst3-ib').set(email)
       end
 
       def setpassword(senha)
