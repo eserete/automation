@@ -6,11 +6,6 @@ RUN echo "America/Sao_Paulo" > /etc/timezone && \
 # Create a default user
 RUN useradd automation --shell /bin/bash --create-home
 
-# Install Chrome for Selenium
-RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /chrome.deb
-RUN dpkg -i /chrome.deb || apt-get install -yf
-RUN rm /chrome.deb
-
 RUN apt update && apt install -y unzip
 # Install Chrome WebDriver
 RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
@@ -21,6 +16,12 @@ RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RE
     chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver && \
     ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
 
+# Install Google Chrome
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get -yqq update && \
+    apt-get -yqq install google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN chromedriver -v
 
@@ -30,6 +31,15 @@ WORKDIR /app
 RUN gem update
 ADD src .
 ADD Gemfile .
+
+# Default configuration
+ENV DISPLAY :20.0
+ENV SCREEN_GEOMETRY "1440x900x24"
+ENV CHROMEDRIVER_PORT 4444
+ENV CHROMEDRIVER_WHITELISTED_IPS "127.0.0.1"
+ENV CHROMEDRIVER_URL_BASE ''
+ENV CHROMEDRIVER_EXTRA_ARGS ''
+
 
 RUN bundle install
 
