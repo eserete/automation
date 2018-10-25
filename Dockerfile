@@ -12,10 +12,6 @@ RUN apt-get update && apt-get install -yq \
     xvfb \
     xsel \
     unzip
-# GeckoDriver v0.19.1
-RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz" -O /tmp/geckodriver.tgz \
-    && tar zxf /tmp/geckodriver.tgz -C /usr/bin/ \
-    && rm /tmp/geckodriver.tgz
 
 # chromeDriver v2.35
 RUN wget -q "https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
@@ -30,8 +26,6 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome \
 # create symlinks to chromedriver and geckodriver (to the PATH)
 RUN ln -s /usr/bin/chromium \
     && chmod 777 /usr/bin/chromium
-
-RUN chromedriver -v
 
 RUN mkdir -p /app
 WORKDIR /app
