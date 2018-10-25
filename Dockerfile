@@ -28,8 +28,8 @@ RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome \
     && chmod 777 /usr/bin/xvfb-chromium
 
 # create symlinks to chromedriver and geckodriver (to the PATH)
-RUN ln -s /usr/bin/chromium-browser \
-    && chmod 777 /usr/bin/chromium-browser
+RUN ln -s /usr/bin/chromium \
+    && chmod 777 /usr/bin/chromium
 
 RUN chromedriver -v
 
