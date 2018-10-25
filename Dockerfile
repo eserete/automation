@@ -31,9 +31,9 @@ RUN mkdir -p /app
 WORKDIR /app
 
 RUN gem update
-ADD src .
+ADD features ./features
 ADD Gemfile .
 
 RUN bundle install
 
-RUN cucumber --tags @wip features/login.feature
+RUN cucumber features/test.feature
